@@ -2,6 +2,10 @@
   "trailingSlash": "auto",
   "routes": [
     {
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
       "route": "/login",
       "rewrite": "/.auth/login/nep?post_login_redirect_uri=https://docs-nuance.azurewebsites.net/"
     },
