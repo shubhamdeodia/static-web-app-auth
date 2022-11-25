@@ -7,11 +7,11 @@
     },
     {
       "route": "/login",
-      "rewrite": "/.auth/login/nep?redirect_uri=https://docs-nuance.azurewebsites.net&post_login_redirect_uri=https://docs-nuance.azurewebsites.net/"
+      "rewrite": "/.auth/login/nep?post_login_redirect_uri=https://docs-nuance.azurewebsites.net/"
     },
     {
       "route": "/logout",
-      "redirect": "https://nep.nuance.mobi/auth/realms/NuanceCustomers/protocol/openid-connect/logout?post_logout_redirect_uri=https://witty-mushroom-0fc00390f.2.azurestaticapps.net"
+      "redirect": "/.auth/logout?post_logout_redirect_uri=https://nep.nuance.mobi/auth/realms/NuanceCustomers/protocol/openid-connect/logout?post_logout_redirect_uri=https://docs-nuance.azurewebsites.net/"
     }
   ],
   "navigationFallback": {
