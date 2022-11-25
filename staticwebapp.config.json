@@ -1,0 +1,55 @@
+{
+  "trailingSlash": "auto",
+  "routes": [
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login/nep?post_login_redirect_uri=https://docs-nuance.azurewebsites.net/"
+    },
+
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout/?post_logout_redirect_uri=https://nep.nuance.mobi/auth/realms/NuanceCustomers/protocol/openid-connect/logout?post_logout_redirect_uri=.referrer"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/nep?post_login_redirect_uri=https://docs-nuance.azurewebsites.net/",
+      "statusCode": 302
+    },
+    "404": {
+      "rewrite": "/404.html"
+    }
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  },
+  "auth": {
+    "identityProviders": {
+      "customOpenIdConnectProviders": {
+        "nep": {
+          "registration": {
+            "clientIdSettingName": "CLIENT_ID",
+            "clientCredential": {
+              "clientSecretSettingName": "CLIENT_SECRET"
+            },
+            "openIdConnectConfiguration": {
+              "wellKnownOpenIdConfiguration": "https://nep.nuance.mobi/auth/realms/NuanceCustomers/.well-known/openid-configuration"
+            }
+          },
+          "login": {
+            "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+            "scopes": [],
+            "loginParameterNames": []
+          }
+        }
+      }
+    }
+  }
+}
