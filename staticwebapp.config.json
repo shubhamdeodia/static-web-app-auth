@@ -5,7 +5,6 @@
       "route": "/login",
       "rewrite": "/.auth/login/nep?post_login_redirect_uri=https://docs-nuance.azurewebsites.net/"
     },
-
     {
       "route": "/logout",
       "redirect": "/.auth/logout/?post_logout_redirect_uri=https://nep.nuance.mobi/auth/realms/NuanceCustomers/protocol/openid-connect/logout?post_logout_redirect_uri=.referrer"
